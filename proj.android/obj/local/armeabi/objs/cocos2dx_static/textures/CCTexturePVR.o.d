@@ -1,0 +1,119 @@
+obj/local/armeabi/objs/cocos2dx_static/textures/CCTexturePVR.o: \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/textures/CCTexturePVR.cpp \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/textures/CCTexture2D.h \
+ /opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/android/log.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCGeometry.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccTypes.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCGL.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2platform.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2ext.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/textures/CCTexturePVR.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCStdC.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/math.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/stdlib.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/alloca.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/strings.h \
+ /opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/memory.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCArray.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/data_support/ccCArray.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccMacros.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/CCConfiguration.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/ccUtils.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCFileUtils.h \
+ /opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccTypeInfo.h \
+ /opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/typeinfo \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/zip_support/ZipUtils.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/shaders/ccGLStateCache.h
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/textures/CCTexture2D.h:
+
+/opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/android/log.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCGeometry.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccTypes.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCGL.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2platform.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/GLES2/gl2ext.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/textures/CCTexturePVR.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCStdC.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/math.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/stdlib.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/alloca.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/strings.h:
+
+/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include/memory.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCArray.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/data_support/ccCArray.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccMacros.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/CCConfiguration.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/ccUtils.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCFileUtils.h:
+
+/opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/vector:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccTypeInfo.h:
+
+/opt/android-ndk-r8c/sources/cxx-stl/gnu-libstdc++/4.6/include/typeinfo:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/support/zip_support/ZipUtils.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/shaders/ccGLStateCache.h:

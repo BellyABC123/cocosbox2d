@@ -1,2 +1,3 @@
 http://renzhi.ca/2011/05/19/programming-3d-games-on-android-with-irrlicht-and-bullet-part-1/
 https://gitorious.org/~cskeyn/irrlichtandroid/cskeyns-irrlichtandroid
+http://rogerdudler.github.com/git-guide/index.zh.html

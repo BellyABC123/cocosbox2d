@@ -1,3 +1,19 @@
 http://renzhi.ca/2011/05/19/programming-3d-games-on-android-with-irrlicht-and-bullet-part-1/
 https://gitorious.org/~cskeyn/irrlichtandroid/cskeyns-irrlichtandroid
 http://rogerdudler.github.com/git-guide/index.zh.html
+
+检出自己在github上fork别人的分支到rrest目录下，其中rrest目录之前是不存在的。
+git clone git@github.com:yss/rrestjs.git rrest
+然后增加远程分支（也就是你fork那个人的分支）名为bob（这个名字任意）到你本地。
+git remote add bob https://github.com/DoubleSpout/rrestjs.git
+如果你运行命令：git remote -v你会发现多出来了一个Bob的远程分支。如下：
+bob https://github.com/DoubleSpout/rrestjs.git (fetch)
+bob https://github.com/DoubleSpout/rrestjs.git (push)
+origin git@github.com:yss/rrestjs.git (fetch)
+origin git@github.com:yss/rrestjs.git (push)
+然后，把对方的代码拉到你本地。
+git fetch bob
+最后，合并对方的代码。
+git merge bob/master
+最最后，把最新的代码推送到你的github上。
+git push origin master

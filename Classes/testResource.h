@@ -40,4 +40,21 @@ static const char s_TilesPng[]            = "TileMaps/tiles.png";
 static const char s_LevelMapTga[]         = "TileMaps/levelmap.tga";
 
 static const float PTM_RATIO = 32.0;
+
+// android effect only support ogg
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    #define EFFECT_FILE        "effect2.ogg"
+#elif( CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
+    #define EFFECT_FILE        "effect1.raw"
+#else
+    #define EFFECT_FILE        "effect1.wav"
+#endif // CC_PLATFORM_ANDROID
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+    #define MUSIC_FILE        "music.mid"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
+    #define MUSIC_FILE        "background.ogg"
+#else
+    #define MUSIC_FILE        "background.mp3"
+#endif // CC_PLATFORM_WIN32
 #endif

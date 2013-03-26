@@ -8,7 +8,9 @@
 #include "LogoLayer.h"
 #include "VisibleRect.h"
 #include "testResource.h"
+#include "SimpleAudioEngine.h"
 
+using namespace CocosDenshion;
 LogoLayer::LogoLayer():m_pWorld(NULL), m_pFireBody(NULL), m_pIceBody(NULL), m_pFireEmitter(NULL), m_pIceEmitter(NULL) {
 	// TODO Auto-generated constructor stub
 
@@ -161,7 +163,12 @@ bool LogoLayer::init()
 	    m_pSnowEmitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("snow.png") );
 	    m_pSnowEmitter->setPosition( ccp(size.width / 2, size.height) );
 
-
+		SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
+		SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
+    
+    // set default volume
+		SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
+		SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
 	    scheduleUpdate();
 	    return true;
 }
@@ -169,6 +176,7 @@ bool LogoLayer::init()
 void LogoLayer::onEnter()
 {
 	CCLayer::onEnter();
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 	runAction( CCSequence::create(
 	                                    CCDelayTime::create(20.0f),
 	                                    CCCallFunc::create(this, callfunc_selector(LogoLayer::enterSysMenu)),

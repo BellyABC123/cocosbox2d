@@ -2,6 +2,7 @@ http://renzhi.ca/2011/05/19/programming-3d-games-on-android-with-irrlicht-and-bu
 https://gitorious.org/~cskeyn/irrlichtandroid/cskeyns-irrlichtandroid
 http://rogerdudler.github.com/git-guide/index.zh.html
 git@github.com:cskeyn/BulletAndroid.git
+http://www.cnblogs.com/fnng/archive/2012/01/07/2315685.html
 
 检出自己在github上fork别人的分支到rrest目录下，其中rrest目录之前是不存在的。
 git clone git@github.com:yss/rrestjs.git rrest

@@ -10,6 +10,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/LogoLayer.cpp \
                    ../../Classes/Paddle.cpp \
+                   ../../Classes/PlayerPaddle.cpp \
                    ../../Classes/TennisTable.cpp \
                    ../../Classes/VisibleRect.cpp \
                    ../../Classes/SysMenu.cpp \

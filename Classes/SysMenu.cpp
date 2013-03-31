@@ -56,22 +56,22 @@ bool SysMenu::init()
     pCloseItem->setTag(0);
     pCloseItem->setPosition( ccp(size.width-20, 20) );
 
-    CCLabelTTF* playLabel = CCLabelTTF::create("PLAY", "Arial", 64);
+    CCLabelTTF* playLabel = CCLabelTTF::create("BreakOut", "Arial", 64);
     CCMenuItemLabel* pPlayItem = CCMenuItemLabel::create(playLabel, this, menu_selector(SysMenu::menuCallback));
     pPlayItem->setTag(1);
     pPlayItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y+200 ));
 
-    CCLabelTTF* optionLabel = CCLabelTTF::create("OPTION", "Arial", 64);
+    CCLabelTTF* optionLabel = CCLabelTTF::create("TileMap", "Arial", 64);
     CCMenuItemLabel* pOptionItem = CCMenuItemLabel::create(optionLabel, this, menu_selector(SysMenu::menuCallback));
     pOptionItem->setTag(2);
     pOptionItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y+100 ));
 
-    CCLabelTTF* setLabel = CCLabelTTF::create("SET", "Arial", 64);
+    CCLabelTTF* setLabel = CCLabelTTF::create("Rope", "Arial", 64);
     CCMenuItemLabel* pSetItem = CCMenuItemLabel::create(setLabel, this, menu_selector(SysMenu::menuCallback));
     pSetItem->setTag(3);
     pSetItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y ));
 
-    CCLabelTTF* quitLabel = CCLabelTTF::create("QUIT", "Arial", 64);
+    CCLabelTTF* quitLabel = CCLabelTTF::create("Bounce", "Arial", 64);
     CCMenuItemLabel* pQuitItem = CCMenuItemLabel::create(quitLabel, this, menu_selector(SysMenu::menuCallback));
     pQuitItem->setTag(4);
     pQuitItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y-100 ));
@@ -82,13 +82,8 @@ bool SysMenu::init()
 
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::create("bg.png");
-
-    pSprite->setContentSize(size);
-
-    // position the sprite on the center of the screen
+//    pSprite->setContentSize(size);
     pSprite->setPosition( ccp(size.width/2, size.height/2) );
-
-    // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
 
     return true;
@@ -98,7 +93,18 @@ void SysMenu::menuCallback(CCObject* pSender)
 {
 	if(((CCNode*)pSender)->getTag() == 0){
 		CCDirector::sharedDirector()->end();
-	}else{
+	}else if(((CCNode*)pSender)->getTag() == 1){
+		CCScene * s = CCScene::create();
+		CCLayer * pLayer = TennisTable::create();
+		s->addChild(pLayer);
+
+		CCDirector::sharedDirector()->setDepthTest(true);
+		CCScene* pScene = CCTransitionPageTurn::create(2.0f, s, false);
+			if (pScene)
+				{
+				     CCDirector::sharedDirector()->replaceScene(pScene);
+				}
+	}else if(((CCNode*)pSender)->getTag() == 2){
 		CCScene * pScene = CCScene::create();
 		CCLayer * pLayer = TennisTable::create();
 		pScene->addChild(pLayer);
@@ -106,6 +112,15 @@ void SysMenu::menuCallback(CCObject* pSender)
 	}
 
 
+}
+
+void SysMenu::onEnter()
+{
+	CCLayer::onEnter();
+}
+void SysMenu::onExit()
+{
+	CCLayer::onExit();
 }
 
 

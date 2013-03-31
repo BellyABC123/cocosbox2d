@@ -1,24 +1,22 @@
 obj/local/armeabi/objs-debug/game_shared/__/__/Classes/AppDelegate.o: \
  jni/../../Classes/AppDelegate.cpp jni/../../Classes/AppDelegate.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCApplication.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h \
- /opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/android/log.h \
- /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCApplicationProtocol.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/cocos2d.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/actions/CCAction.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h \
+ /opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/android/log.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCGeometry.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/actions/CCActionInterval.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/base_nodes/CCNode.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccMacros.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCStdC.h \
  /opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/math.h \
  /opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/sys/cdefs.h \
@@ -187,6 +185,7 @@ obj/local/armeabi/objs-debug/game_shared/__/__/Classes/AppDelegate.o: \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCThread.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCAccelerometer.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCApplication.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCApplicationProtocol.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCEGLView.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCEGLViewProtocol.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCGL.h \
@@ -266,37 +265,31 @@ obj/local/armeabi/objs-debug/game_shared/__/__/Classes/AppDelegate.o: \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2RevoluteJoint.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2RopeJoint.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2WeldJoint.h \
- jni/../../Classes/SysMenu.h
+ jni/../../Classes/SysMenu.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/SimpleAudioEngine.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/Export.h
 
 jni/../../Classes/AppDelegate.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCApplication.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h:
-
-/opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/android/log.h:
-
-/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCApplicationProtocol.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/cocos2d.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/actions/CCAction.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCObject.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformConfig.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCPlatformDefine.h:
+
+/opt/android-ndk-r8c/platforms/android-8/arch-arm/usr/include/android/log.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/cocoa/CCGeometry.h:
 
@@ -307,6 +300,10 @@ jni/../../Classes/AppDelegate.h:
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/base_nodes/CCNode.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include/ccMacros.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCCommon.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCPlatformMacros.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCStdC.h:
 
@@ -644,6 +641,8 @@ jni/../../Classes/AppDelegate.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCApplication.h:
 
+/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCApplicationProtocol.h:
+
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/android/CCEGLView.h:
 
 /opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/platform/CCEGLViewProtocol.h:
@@ -803,3 +802,7 @@ jni/../../Classes/LogoLayer.h:
 /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2WeldJoint.h:
 
 jni/../../Classes/SysMenu.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/SimpleAudioEngine.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/Export.h:

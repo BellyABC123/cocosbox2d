@@ -11,6 +11,7 @@
 #include "Box2D/Box2D.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "PlayerPaddle.h"
 USING_NS_CC;
 class TennisTable: public CCLayer, b2ContactListener {
 	enum GameState
@@ -34,6 +35,9 @@ public:
 	virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCSet *pTouch, CCEvent *pEvent);
 
+	virtual void keyBackClicked();//Android 返回键
+	virtual void keyMenuClicked();//Android 菜单键
+
 	virtual void BeginContact(b2Contact* contact);
     virtual void EndContact(b2Contact* contact);
     virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
@@ -44,8 +48,8 @@ public:
 private:
 	b2World	*m_pWorld;
 	CCArray*	m_paddles;
-	Paddle	*m_pTopPlayer;
-	Paddle	*m_pBottomPlayer;
+	PlayerPaddle	*m_pTopPlayer;
+	PlayerPaddle	*m_pBottomPlayer;
 	Ball	*m_pBall;
 	b2Body	*m_pGroundBody;
 	b2Fixture	*m_pBottomFixture;

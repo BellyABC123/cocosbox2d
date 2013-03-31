@@ -2,7 +2,7 @@
 #include "testResource.h"
 
 Paddle::Paddle(void) :
-		m_bIgnoreBodyRotation(false), m_pBody(NULL), m_bIsPlayer(false), m_pFixture(
+		m_bIgnoreBodyRotation(false), m_pBody(NULL),  m_pFixture(
 				NULL), m_pMouseJoint(NULL), m_pPrismaticJoint(NULL), m_pRevoluteJoint(
 				NULL), m_pGroundBody(NULL) {
 }
@@ -128,7 +128,7 @@ void Paddle::createBox2DBody(b2World *pWorld, const CCPoint& position)
 	paddleShapeDef.shape =&paddleShape;
 	paddleShapeDef.density =5.0f;
 	paddleShapeDef.friction =0.0f;
-	paddleShapeDef.restitution =1.0f;
+	paddleShapeDef.restitution =0.5f;
 	m_pFixture = m_pBody->CreateFixture(&paddleShapeDef);
 
 //	b2Vec2 v = b2Vec2(10, 0);
@@ -149,65 +149,7 @@ void Paddle::keepVelocity(float dt)
 	m_pBody->GetLinearVelocity() *=ratio;
 }
 
-bool Paddle::ccTouchBegan(CCTouch* touch, CCEvent* event)
-{
-	CCPoint location = touch->getLocation();
-	CCRect rect = boundingBox();
-	if(!rect.containsPoint(location))
-		return false;
-	if(m_bIsPlayer)
-	{
-		if(m_pMouseJoint == NULL)
-		{
-			b2Vec2 b2location = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
-			if(m_pFixture->TestPoint(b2location))
-			{
-				b2MouseJointDef jointDef;
-				jointDef.bodyA = m_pGroundBody;
-				jointDef.bodyB = m_pBody;
-				jointDef.target = b2location;
-				jointDef.collideConnected =true;
-				jointDef.maxForce = 5.0f* m_pBody->GetMass();
-				jointDef.frequencyHz = 10.0;
-				jointDef.dampingRatio = 1.0;
-				m_pMouseJoint = (b2MouseJoint *)m_pWorld->CreateJoint(&jointDef);
-				m_pBody->SetAwake(true);
-			}
-		}
-	}
-	return true;
-}
-void Paddle::ccTouchMoved(CCTouch* touch, CCEvent* event)
-{
-	if(m_bIsPlayer)
-	{
-		CCPoint location = touch->getLocation();
-//		CCRect rect = boundingBox();
-//		if(!rect.containsPoint(location))
-//			return;
-		if (m_pMouseJoint) {
-//			CCPoint location = touch->getLocation();
-//			if(!rect().containsPoint(location))
-//				return;
-			b2Vec2 b2location = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
-			m_pMouseJoint->SetTarget(b2location);
-		}
-	}
-}
-void Paddle::ccTouchEnded(CCTouch* touch, CCEvent* event)
-{
-	if(m_bIsPlayer)
-	{
-		if (m_pMouseJoint) {
-			CCPoint location = touch->getLocation();
-//			if(!rect().containsPoint(location))
-//						return;
-			m_pWorld->DestroyJoint(m_pMouseJoint);
-			m_pMouseJoint = NULL;
-		}
-	}
 
-}
 void Paddle::creatPrismaticJoint(bool enableMotor)
 {
 	b2PrismaticJointDef jointDef;
@@ -250,22 +192,4 @@ CCRect Paddle::rect()
 	return CCRectMake(x, y, m_obContentSize.width, m_obContentSize.height);
 }
 
-void Paddle::onEnter()
-{
-	if(m_bIsPlayer)
-	{
-		CCDirector* pDirector = CCDirector::sharedDirector();
-		pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	}
-    CCSprite::onEnter();
-}
 
-void Paddle::onExit()
-{
-	if(m_bIsPlayer)
-	{
-		CCDirector* pDirector = CCDirector::sharedDirector();
-		pDirector->getTouchDispatcher()->removeDelegate(this);
-	}
-    CCSprite::onExit();
-}

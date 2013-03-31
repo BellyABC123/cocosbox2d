@@ -43,11 +43,12 @@ static const float PTM_RATIO = 32.0;
 
 // android effect only support ogg
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    #define EFFECT_FILE        "effect2.ogg"
+    #define EFFECT_FILE_1        "pz1.ogg"
+	#define EFFECT_FILE_2        "pz2.ogg"
 #elif( CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
-    #define EFFECT_FILE        "effect1.raw"
+    #define EFFECT_FILE_1        "effect1.raw"
 #else
-    #define EFFECT_FILE        "effect1.wav"
+    #define EFFECT_FILE_1        "effect1.wav"
 #endif // CC_PLATFORM_ANDROID
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)

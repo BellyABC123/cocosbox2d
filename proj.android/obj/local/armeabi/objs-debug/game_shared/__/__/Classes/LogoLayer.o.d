@@ -265,7 +265,9 @@ obj/local/armeabi/objs-debug/game_shared/__/__/Classes/LogoLayer.o: \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2RopeJoint.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../Classes/SysMenu.h jni/../../Classes/VisibleRect.h \
- jni/../../Classes/testResource.h
+ jni/../../Classes/testResource.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/SimpleAudioEngine.h \
+ /opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/Export.h
 
 jni/../../Classes/LogoLayer.h:
 
@@ -802,3 +804,7 @@ jni/../../Classes/SysMenu.h:
 jni/../../Classes/VisibleRect.h:
 
 jni/../../Classes/testResource.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/SimpleAudioEngine.h:
+
+/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/android/../include/Export.h:

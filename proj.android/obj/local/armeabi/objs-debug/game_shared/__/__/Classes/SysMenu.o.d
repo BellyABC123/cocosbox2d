@@ -265,7 +265,8 @@ obj/local/armeabi/objs-debug/game_shared/__/__/Classes/SysMenu.o: \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2RevoluteJoint.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2RopeJoint.h \
  /opt/cocos2d-2.1beta3-x-2.1.1/external/Box2D/../Box2D/Dynamics/Joints/b2WeldJoint.h \
- jni/../../Classes/Paddle.h jni/../../Classes/Ball.h
+ jni/../../Classes/Paddle.h jni/../../Classes/Ball.h \
+ jni/../../Classes/PlayerPaddle.h
 
 jni/../../Classes/SysMenu.h:
 
@@ -804,3 +805,5 @@ jni/../../Classes/TennisTable.h:
 jni/../../Classes/Paddle.h:
 
 jni/../../Classes/Ball.h:
+
+jni/../../Classes/PlayerPaddle.h:

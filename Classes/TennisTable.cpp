@@ -9,6 +9,9 @@
 #include "testResource.h"
 #include "VisibleRect.h"
 #include "SysMenu.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 TennisTable::TennisTable():m_pWorld(NULL),m_paddles(NULL), m_pTopPlayer(NULL), m_pBottomPlayer(NULL), m_pBall(NULL){
 	// TODO Auto-generated constructor stub
@@ -58,25 +61,35 @@ bool TennisTable::init()
 	groundBox.Set(b2Vec2(VisibleRect::rightBottom().x/PTM_RATIO,VisibleRect::rightBottom().y/PTM_RATIO), b2Vec2(VisibleRect::rightTop().x/PTM_RATIO,VisibleRect::rightTop().y/PTM_RATIO));
 	m_pGroundBody->CreateFixture(&groundBoxDef);
 
-	m_paddles = CCArray::createWithCapacity(5);
+	m_paddles = CCArray::createWithCapacity(3);
 	m_paddles->retain();
 
-	Paddle* pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x-100, VisibleRect::center().y+100), CCRectMake(0, 0, 90, 20));
+//	Paddle* pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x-200, VisibleRect::center().y+200), CCRectMake(0, 0, 90, 20));
+//	pPaddle->setGroundBody(m_pGroundBody);
+//	pPaddle->creatRevoluteJoint();
+//	m_paddles->addObject(pPaddle);
+//
+//	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x+200, VisibleRect::center().y+200), CCRectMake(0, 0, 90, 20));
+//	pPaddle->setGroundBody(m_pGroundBody);
+//	pPaddle->creatRevoluteJoint();
+//	m_paddles->addObject(pPaddle);
+//
+//	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x -200, VisibleRect::center().y-200), CCRectMake(0, 0, 90, 20));
+//	pPaddle->setGroundBody(m_pGroundBody);
+//	pPaddle->creatRevoluteJoint();
+//	m_paddles->addObject(pPaddle);
+//
+//	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x +200, VisibleRect::center().y-200), CCRectMake(0, 0, 90, 20));
+//	pPaddle->setGroundBody(m_pGroundBody);
+//	pPaddle->creatRevoluteJoint();
+//	m_paddles->addObject(pPaddle);
+
+	Paddle* pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Paddle.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::bottom().y+350), CCRectMake(0, 0, 120, 30));
 	pPaddle->setGroundBody(m_pGroundBody);
 	pPaddle->creatRevoluteJoint();
 	m_paddles->addObject(pPaddle);
 
-	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x+100, VisibleRect::center().y+130), CCRectMake(0, 0, 90, 20));
-	pPaddle->setGroundBody(m_pGroundBody);
-	pPaddle->creatRevoluteJoint();
-	m_paddles->addObject(pPaddle);
-
-	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x -100, VisibleRect::center().y-130), CCRectMake(0, 0, 90, 20));
-	pPaddle->setGroundBody(m_pGroundBody);
-	pPaddle->creatRevoluteJoint();
-	m_paddles->addObject(pPaddle);
-
-	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Block.png"), m_pWorld, ccp(VisibleRect::center().x +100, VisibleRect::center().y-100), CCRectMake(0, 0, 90, 20));
+	pPaddle = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("Paddle.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::top().y-350), CCRectMake(0, 0, 120, 30));
 	pPaddle->setGroundBody(m_pGroundBody);
 	pPaddle->creatRevoluteJoint();
 	m_paddles->addObject(pPaddle);
@@ -101,33 +114,33 @@ bool TennisTable::init()
 
 
 
-	m_pTopPlayer = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("player.png"), m_pWorld, ccp(VisibleRect::top().x, VisibleRect::top().y-50), CCRectMake(0, 0, 120, 30));
+	m_pTopPlayer = PlayerPaddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("player.png"), m_pWorld, ccp(VisibleRect::top().x, VisibleRect::top().y-50), CCRectMake(0, 0, 150, 50));
 	m_pTopPlayer->setGroundBody(m_pGroundBody);
-	m_pTopPlayer->setIsPlayer(true);
-	m_pTopPlayer->creatPrismaticJoint(false);
+//	m_pTopPlayer->creatPrismaticJoint(false);
 	addChild(m_pTopPlayer);
 
-	m_pBottomPlayer = Paddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("player.png"), m_pWorld, ccp(VisibleRect::bottom().x, VisibleRect::bottom().y+50), CCRectMake(0, 0, 120, 30));
+	m_pBottomPlayer = PlayerPaddle::paddleWithTexture(CCTextureCache::sharedTextureCache()->addImage("player.png"), m_pWorld, ccp(VisibleRect::bottom().x, VisibleRect::bottom().y+50), CCRectMake(0, 0, 150, 50));
 	m_pBottomPlayer->setGroundBody(m_pGroundBody);
-	m_pBottomPlayer->setIsPlayer(true);
-	m_pBottomPlayer->creatPrismaticJoint(false);
+//	m_pBottomPlayer->creatPrismaticJoint(false);
 	addChild(m_pBottomPlayer);
 
-	m_pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("Ball.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::center().y-100));
-	b2Vec2 force = b2Vec2(0, -100);
+	m_pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::bottom().y+100));
+	b2Vec2 force = b2Vec2(0, 20);
 	m_pBall->applyBox2DForce(force);
 	addChild(m_pBall);
 
 	m_pWorld->SetContactListener(this);
 
 	setTouchEnabled(true);
+	setAccelerometerEnabled(true);
 
 	m_plabel = CCLabelTTF::create("touch to begin", "Arial", 32);
-	CCRGBAProtocol *pRGBAProtocol = dynamic_cast<CCRGBAProtocol*>(m_plabel);
-    if (pRGBAProtocol)
-    {
-        pRGBAProtocol->setOpacity((GLubyte)(100));
-    }
+	m_plabel->setOpacity((GLubyte)100);
+//	CCRGBAProtocol *pRGBAProtocol = dynamic_cast<CCRGBAProtocol*>(m_plabel);
+//    if (pRGBAProtocol)
+//    {
+//        pRGBAProtocol->setOpacity((GLubyte)(100));
+//    }
 	addChild(m_plabel, -1);
 	m_plabel->setPosition(ccp(VisibleRect::center().x, VisibleRect::center().y-50));
 
@@ -153,47 +166,64 @@ bool TennisTable::init()
 void TennisTable::onEnter()
 {
 	CCLayer::onEnter();
+	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE_1);
+	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE_2);
+	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
 	m_pScheduler->scheduleUpdateForTarget(this, 0, true);
 }
 void TennisTable::onExit()
 {
 	unscheduleUpdate();
+	SimpleAudioEngine::sharedEngine()->unloadEffect(EFFECT_FILE_1);
+	SimpleAudioEngine::sharedEngine()->unloadEffect(EFFECT_FILE_2);
 	CCLayer::onExit();
+}
+
+void TennisTable::keyBackClicked()
+{
+	CCScene * pScene = CCScene::create();
+			CCLayer * pSysMenu = SysMenu::create();
+			pScene->addChild(pSysMenu);
+			CCDirector::sharedDirector()->replaceScene(pScene);
+}
+
+void TennisTable::keyMenuClicked()
+{
+
 }
 
 void TennisTable::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
+	CCLog("ccTouchBegan ...");
 	CCSetIterator it = pTouches->begin();
 	CCTouch* touch = (CCTouch*)(*it);
 	CCPoint touchLocation = touch->getLocation();
 
 	if (touchLocation.y < VisibleRect::top().y - 350
 			&& touchLocation.y > VisibleRect::bottom().y + 350) {
-		CCScene * pScene = CCScene::create();
-		CCLayer * pSysMenu = SysMenu::create();
-		pScene->addChild(pSysMenu);
-		CCDirector::sharedDirector()->replaceScene(pScene);
-	} else {
-
+//		CCScene * pScene = CCScene::create();
+//		CCLayer * pSysMenu = SysMenu::create();
+//		pScene->addChild(pSysMenu);
+//		CCDirector::sharedDirector()->replaceScene(pScene);
 		if (m_pScheduler->isTargetPaused(this)) {
-			m_pScheduler->resumeTarget(this);
-			m_eGameState = running;
-			m_plabel->setString("touch to pause");
-		} else {
-			m_eGameState = paused;
-			m_pScheduler->pauseTarget(this);
-			m_plabel->setString("touch to begin");
-		}
+					m_pScheduler->resumeTarget(this);
+					m_eGameState = running;
+					m_plabel->setString("touch to pause");
+				} else {
+					m_eGameState = paused;
+					m_pScheduler->pauseTarget(this);
+					m_plabel->setString("touch to begin");
+				}
 	}
 }
 void TennisTable::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
-
+	CCLog("ccTouchesMoved ...");
 }
 
 void TennisTable::ccTouchEnded(CCSet *pTouches, CCEvent *pEvent)
 {
-
+	CCLog("ccTouchEnded ...");
 }
 
 void TennisTable::update(float dt)
@@ -230,8 +260,7 @@ void TennisTable::BeginContact(b2Contact* contact) {
 		if (userData) {
 			m_eGameState = topwin;
 		}
-		b2Vec2 force = b2Vec2(0, 100);
-		m_pBall->applyBox2DForce(force);
+		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 	}
 
 	if (fixtureB == m_pBottomFixture) {
@@ -239,8 +268,7 @@ void TennisTable::BeginContact(b2Contact* contact) {
 		if (userData) {
 			m_eGameState = topwin;
 		}
-		b2Vec2 force = b2Vec2(0, 100);
-				m_pBall->applyBox2DForce(force);
+		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 	}
 
 	if (fixtureA == m_pTopFixture) {
@@ -248,8 +276,7 @@ void TennisTable::BeginContact(b2Contact* contact) {
 			if (userData) {
 				m_eGameState = bottomwin;
 			}
-			b2Vec2 force = b2Vec2(0, -100);
-			//m_pBall->applyBox2DForce(force);
+			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 		}
 
 		if (fixtureB == m_pTopFixture) {
@@ -257,9 +284,18 @@ void TennisTable::BeginContact(b2Contact* contact) {
 			if (userData) {
 				m_eGameState = bottomwin;
 			}
-			b2Vec2 force = b2Vec2(0, -100);
-			//m_pBall->applyBox2DForce(force);
+			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 		}
+
+		if(fixtureA == m_pTopPlayer->getFixture()||fixtureB == m_pTopPlayer->getFixture())
+			{
+			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
+			}
+
+			if(fixtureA == m_pBottomPlayer->getFixture()||fixtureB == m_pBottomPlayer->getFixture())
+			{
+				SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
+			}
 }
 void TennisTable::EndContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
@@ -268,15 +304,26 @@ void TennisTable::EndContact(b2Contact* contact) {
 
 	if (fixtureA == m_pTopFixture||fixtureB == m_pTopFixture) {
 		CCLog("End Contact top");
-		b2Vec2 force = b2Vec2(0, -100);
-		m_pBall->applyBox2DForce(force);
+		b2Vec2 force = b2Vec2(0, -10);
+		m_pBall->getB2Body()->SetLinearVelocity(force);
 	}
 
-	if (fixtureA == m_pTopFixture||fixtureB == m_pTopFixture) {
+	if (fixtureA == m_pBottomFixture||fixtureB == m_pBottomFixture) {
 		CCLog("End Contact bottom");
-		b2Vec2 force = b2Vec2(0, 100);
-		m_pBall->applyBox2DForce(force);
+		b2Vec2 force = b2Vec2(0, 10);
+		m_pBall->getB2Body()->SetLinearVelocity(force);
 	}
+
+	if (fixtureA == m_pTopPlayer->getFixture()
+			|| fixtureB == m_pTopPlayer->getFixture()) {
+		m_pBall->getB2Body()->SetLinearVelocity(1.2*m_pBall->getB2Body()->GetLinearVelocity());
+	}
+
+	if (fixtureA == m_pBottomPlayer->getFixture()
+			|| fixtureB == m_pBottomPlayer->getFixture()) {
+		m_pBall->getB2Body()->SetLinearVelocity(1.2*m_pBall->getB2Body()->GetLinearVelocity());
+	}
+
 }
 void TennisTable::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {

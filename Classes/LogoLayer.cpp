@@ -71,10 +71,10 @@ bool LogoLayer::init()
 	       addChild(sub, 100);
 	       sub->setPosition(ccp(0, size.height-500));
 
-	       CCActionInterval * move = CCSequence::create(CCDelayTime::create(1), CCMoveBy::create(4, ccp(500,0)), NULL);
+	       CCActionInterval * move = CCSequence::create(CCDelayTime::create(1), CCMoveBy::create(4, ccp(650,0)), NULL);
 	       label->runAction(move);
 
-	       CCActionInterval * submove = CCSequence::create(CCDelayTime::create(5), CCMoveBy::create(4, ccp(300,0)), NULL);
+	       CCActionInterval * submove = CCSequence::create(CCDelayTime::create(5), CCMoveBy::create(4, ccp(400,0)), NULL);
 	       sub->runAction(submove);
 
 
@@ -164,11 +164,8 @@ bool LogoLayer::init()
 	    m_pSnowEmitter->setPosition( ccp(size.width / 2, size.height) );
 
 		SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
-		SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
-    
     // set default volume
-		SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
-		SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+		SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.3);
 	    scheduleUpdate();
 	    return true;
 }
@@ -187,18 +184,30 @@ void LogoLayer::onEnter()
 
 void LogoLayer::enterSysMenu()
 {
-	CCScene * pScene = CCScene::create();
+	SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+	CCScene * s = CCScene::create();
 	CCLayer * pSysMenu = SysMenu::create();
-	pScene->addChild(pSysMenu);
-	CCDirector::sharedDirector()->replaceScene(pScene);
+	s->addChild(pSysMenu);
+
+	CCScene* pScene = CCTransitionCrossFade::create(2.0f, s);
+	if (pScene)
+	{
+	     CCDirector::sharedDirector()->replaceScene(pScene);
+	}
 }
 
 void LogoLayer::menuCallback(CCObject* pSender)
 {
-	CCScene * pScene = CCScene::create();
+	SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+	CCScene * s = CCScene::create();
 	CCLayer * pSysMenu = SysMenu::create();
-	pScene->addChild(pSysMenu);
-	CCDirector::sharedDirector()->replaceScene(pScene);
+	s->addChild(pSysMenu);
+
+	CCScene* pScene = CCTransitionJumpZoom::create(2.0f, s);
+	if (pScene)
+		{
+		     CCDirector::sharedDirector()->replaceScene(pScene);
+		}
 }
 
 void LogoLayer::update(float dt)

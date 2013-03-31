@@ -24,6 +24,11 @@ public:
 	    // a selector callback
 	void menuCallback(CCObject* pSender);
 
+	virtual void onEnter();
+
+	virtual void onExit();
+
+
 	    // implement the "static node()" method manually
 	CREATE_FUNC(SysMenu);
 };

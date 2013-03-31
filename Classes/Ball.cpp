@@ -80,16 +80,20 @@ void Ball::createBox2DBody(b2World *pWorld, const CCPoint& position) {
 	// Create shape definition and add to body
 	b2FixtureDef ballShapeDef;
 	ballShapeDef.shape = &ballShape;
-	ballShapeDef.density = 1.5f;
-	ballShapeDef.friction = 0.2f;
-	ballShapeDef.restitution = 0.7f;
+	ballShapeDef.density = 1.0f;
+	ballShapeDef.friction = 0.1f;
+	ballShapeDef.restitution = 1.0f;
 	m_pBody->CreateFixture(&ballShapeDef);
+
+	m_pBody->SetFixedRotation(true);
+	m_pBody->SetBullet(true);
+	m_pBody->SetLinearDamping(0.3);
 
 	m_pBody->SetUserData(this);
 }
 
 
-Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoint& position)
+Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoint& position )
 {
 	Ball* pBall = new Ball();
 	if(pBall && pBall->initWithTexture(aTexture))
@@ -106,7 +110,6 @@ Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoin
 
 void Ball::applyBox2DForce(const b2Vec2& force)
 {
-	CCLog("the mass of the ball is %f", m_pBody->GetMass());
 //	m_pBody->ApplyForce(force, m_pBody->GetWorldCenter());
 	m_pBody->ApplyLinearImpulse(force, m_pBody->GetWorldCenter());
 //	m_pBody->SetLinearVelocity(force);

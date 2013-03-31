@@ -31,6 +31,7 @@
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1644056187" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include"/>
 									<listOptionValue builtIn="false" value="/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include"/>
+									<listOptionValue builtIn="false" value="/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/include"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.849989195" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
@@ -38,6 +39,7 @@
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1309720836" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/opt/android-ndk-r8c/platforms/android-14/arch-arm/usr/include"/>
 									<listOptionValue builtIn="false" value="/opt/cocos2d-2.1beta3-x-2.1.1/cocos2dx/include"/>
+									<listOptionValue builtIn="false" value="/opt/cocos2d-2.1beta3-x-2.1.1/CocosDenshion/include"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1262529673" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
@@ -67,4 +69,5 @@
 	<storageModule moduleId="refreshScope" versionNumber="1">
 		<resource resourceType="PROJECT" workspacePath="/box2d"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

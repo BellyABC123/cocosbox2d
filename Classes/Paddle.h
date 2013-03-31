@@ -7,11 +7,10 @@
 USING_NS_CC;
 
 
-class Paddle : public CCSprite, public CCTargetedTouchDelegate
+class Paddle : public CCSprite
 {
-private:
+protected:
 	bool	m_bIgnoreBodyRotation;
-	bool	m_bIsPlayer;
 	b2Body	*m_pBody;
 	b2MouseJoint	*m_pMouseJoint;
 	float	m_pVelocity;
@@ -29,9 +28,6 @@ public:
     virtual float getRotation();
     virtual void setRotation(float fRotation);
     virtual CCAffineTransform nodeToParentTransform();
-
-    virtual void onEnter();
-    virtual void onExit();
 
     b2Body* getB2Body() const
     {
@@ -52,34 +48,22 @@ public:
     	m_bIgnoreBodyRotation = bIgnoreBodyRotation;
     }
 
-    bool isPlayer() const
-    {
-    	return m_bIsPlayer;
-    }
-
-    void setIsPlayer(bool bIsPlayer)
-    {
-    	m_bIsPlayer = bIsPlayer;
-    	m_pFixture->SetDensity(10);
-    	m_pFixture->SetFriction(1.0);
-    	m_pFixture->SetRestitution(0.0);
-    }
-
     void setGroundBody(b2Body* pGroundBody)
     {
     	m_pGroundBody = pGroundBody;
     }
 
-    void createBox2DBody(b2World *pWorld, const CCPoint& position);
+    virtual void createBox2DBody(b2World *pWorld, const CCPoint& position);
 
     void setBox2DVelocity(const b2Vec2& velocity);
 
-    virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-    virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
-    virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
-
     void creatPrismaticJoint(bool enableMotor);
     void creatRevoluteJoint();
+
+    b2Fixture* getFixture() const
+    {
+    	return m_pFixture;
+    }
 
 private:
     void keepVelocity(float dt);

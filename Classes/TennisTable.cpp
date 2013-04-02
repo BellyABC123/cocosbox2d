@@ -231,88 +231,58 @@ void TennisTable::update(float dt)
     int velocityIterations = 8;
     int positionIterations = 3;
     m_pWorld->Step(dt, velocityIterations, positionIterations);
-    if(m_eGameState == bottomwin)
+    if(m_eGameState == bottomwin || m_eGameState == topwin)
     {
-    	m_plabel->setString("touch to continue game");
-    	m_iBotPoint++;
-    	char string[15] = {0};
-    	sprintf(string, "得分：%d", m_iBotPoint);
-    	m_pBotPointLabel->setString(string);
-    	m_pScheduler->pauseTarget(this);
+    	m_eGameState == bottomwin?m_iBotPoint++:m_iTopPoint++;
+    	CCScene * pScene = CCScene::create();
+    	CCLayer * pLayer = TennisTable::create();
+    	((TennisTable*)pLayer)->setBottomPoint(m_iBotPoint);
+    	((TennisTable*)pLayer)->setTopPoint(m_iTopPoint);
+    	pScene->addChild(pLayer);
+    	CCDirector::sharedDirector()->replaceScene(pScene);
     }
-
-    if (m_eGameState == topwin) {
-		m_plabel->setString("touch to continue game");
-		m_iTopPoint++;
-		char string[15] = { 0 };
-		sprintf(string, "得分：%d", m_iTopPoint);
-		m_pTopPointLabel->setString(string);
-		m_pScheduler->pauseTarget(this);
-	}
 }
 
 void TennisTable::BeginContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
 	b2Fixture* fixtureB = contact->GetFixtureB();
 
-	if (fixtureA == m_pBottomFixture) {
-		void* userData = fixtureB->GetBody()->GetUserData();
-		if (userData) {
-			m_eGameState = topwin;
-		}
+	if (fixtureA == m_pBottomFixture || fixtureB == m_pBottomFixture) {
+		m_eGameState = topwin;
 		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 	}
 
-	if (fixtureB == m_pBottomFixture) {
-		void* userData = fixtureA->GetBody()->GetUserData();
-		if (userData) {
-			m_eGameState = topwin;
-		}
+	if (fixtureA == m_pBottomFixture || fixtureB == m_pBottomFixture) {
+		m_eGameState = topwin;
 		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
 	}
 
-	if (fixtureA == m_pTopFixture) {
-			void* userData = fixtureB->GetBody()->GetUserData();
-			if (userData) {
-				m_eGameState = bottomwin;
-			}
-			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
-		}
+	if(fixtureA == m_pTopPlayer->getFixture()||fixtureB == m_pTopPlayer->getFixture())
+	{
+		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
+	}
 
-		if (fixtureB == m_pTopFixture) {
-			void* userData = fixtureA->GetBody()->GetUserData();
-			if (userData) {
-				m_eGameState = bottomwin;
-			}
-			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_1);
-		}
-
-		if(fixtureA == m_pTopPlayer->getFixture()||fixtureB == m_pTopPlayer->getFixture())
-			{
-			SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
-			}
-
-			if(fixtureA == m_pBottomPlayer->getFixture()||fixtureB == m_pBottomPlayer->getFixture())
-			{
-				SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
-			}
+	if(fixtureA == m_pBottomPlayer->getFixture()||fixtureB == m_pBottomPlayer->getFixture())
+	{
+		SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
+	}
 }
 void TennisTable::EndContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
 	b2Fixture* fixtureB = contact->GetFixtureB();
 
 
-	if (fixtureA == m_pTopFixture||fixtureB == m_pTopFixture) {
-		CCLog("End Contact top");
-		b2Vec2 force = b2Vec2(0, -10);
-		m_pBall->getB2Body()->SetLinearVelocity(force);
-	}
-
-	if (fixtureA == m_pBottomFixture||fixtureB == m_pBottomFixture) {
-		CCLog("End Contact bottom");
-		b2Vec2 force = b2Vec2(0, 10);
-		m_pBall->getB2Body()->SetLinearVelocity(force);
-	}
+//	if (fixtureA == m_pTopFixture||fixtureB == m_pTopFixture) {
+//		CCLog("End Contact top");
+//		b2Vec2 force = b2Vec2(0, -10);
+//		m_pBall->getB2Body()->SetLinearVelocity(force);
+//	}
+//
+//	if (fixtureA == m_pBottomFixture||fixtureB == m_pBottomFixture) {
+//		CCLog("End Contact bottom");
+//		b2Vec2 force = b2Vec2(0, 10);
+//		m_pBall->getB2Body()->SetLinearVelocity(force);
+//	}
 
 	if (fixtureA == m_pTopPlayer->getFixture()
 			|| fixtureB == m_pTopPlayer->getFixture()) {

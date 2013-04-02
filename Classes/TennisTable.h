@@ -43,6 +43,16 @@ public:
     virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
     virtual void PostSolve(const b2Contact* contact, const b2ContactImpulse* impulse);
 
+    void setTopPoint(unsigned int topPoint)
+    {
+    	this->m_iTopPoint = topPoint;
+    }
+
+    void setBottomPoint(unsigned int bottomPoint)
+    {
+        this->m_iBotPoint = bottomPoint;
+    }
+
 	CREATE_FUNC(TennisTable);
 	void update(float dt);
 private:

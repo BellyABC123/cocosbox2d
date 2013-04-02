@@ -37,9 +37,6 @@ public:
 
 	void createBox2DBody(b2World *pWorld, const CCPoint& position);
 
-	void applyBox2DForce(const b2Vec2& force);
-
-
 public:
 	static Ball* ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoint& position);
 };

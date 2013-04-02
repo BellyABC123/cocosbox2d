@@ -108,13 +108,13 @@ Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoin
 	return pBall;
 }
 
-void Ball::applyBox2DForce(const b2Vec2& force)
-{
-//	m_pBody->ApplyForce(force, m_pBody->GetWorldCenter());
-	m_pBody->ApplyLinearImpulse(force, m_pBody->GetWorldCenter());
-//	m_pBody->SetLinearVelocity(force);
-//	m_pBody->ApplyForceToCenter(force);
-}
+//void Ball::applyBox2DForce(const b2Vec2& force)
+//{
+////	m_pBody->ApplyForce(force, m_pBody->GetWorldCenter());
+//	m_pBody->ApplyLinearImpulse(force, m_pBody->GetWorldCenter());
+////	m_pBody->SetLinearVelocity(force);
+////	m_pBody->ApplyForceToCenter(force);
+//}
 
 
 

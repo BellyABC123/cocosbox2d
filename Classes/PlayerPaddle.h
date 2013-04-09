@@ -12,12 +12,14 @@
 class PlayerPaddle: public Paddle, public CCTargetedTouchDelegate
 {
 private:
-	float power;
-	float m_fInitPositionY;
+	float	m_fPower;
+	bool	m_bIsTouched;
+	b2MouseJoint	*m_pMouseJoint;
 public:
 	PlayerPaddle();
 	virtual ~PlayerPaddle();
 	virtual void createBox2DBody(b2World *pWorld, const CCPoint& position);
+	virtual void creatPrismaticJoint();
 
 	virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 	virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
@@ -26,9 +28,11 @@ public:
     virtual void onEnter();
     virtual void onExit();
 
-    void setInitPositionY(float y)
+    void update(float dt);
+
+    float getPower() const
     {
-    	this->m_fInitPositionY = y;
+    	return m_fPower;
     }
 public:
     static PlayerPaddle* paddleWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoint& position, const CCRect& rect);

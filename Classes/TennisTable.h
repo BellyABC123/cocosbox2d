@@ -64,13 +64,28 @@ private:
 	b2Body	*m_pGroundBody;
 	b2Fixture	*m_pBottomFixture;
 	b2Fixture	*m_pTopFixture;
+	b2Fixture	*m_pLeftFixture;
+	b2Fixture	*m_pRightFixture;
 	CCLabelTTF	*m_plabel;
 	GameState	m_eGameState;
 	unsigned int	m_iTopPoint;
 	unsigned int	m_iBotPoint;
 	CCLabelTTF	*m_pTopPointLabel;
 	CCLabelTTF	*m_pBotPointLabel;
+
+	CCLabelTTF	*m_pTopPowerLabel;
+	CCLabelTTF	*m_pBotPowerLabel;
+	CCParticleSystem*    m_pEmitter;
 };
+
+//class DestructionListener : public b2DestructionListener
+//{
+//public:
+//    void SayGoodbye(b2Fixture* fixture) { B2_NOT_USED(fixture); }
+//    void SayGoodbye(b2Joint* joint);
+//
+//    Test* test;
+//};
 
 
 #endif /* TENNISTABLE_H_ */

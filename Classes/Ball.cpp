@@ -68,8 +68,8 @@ void Ball::setPosition(const CCPoint &pos)
 
 
 void Ball::createBox2DBody(b2World *pWorld, const CCPoint& position) {
+	m_pWorld = pWorld;
 	b2BodyDef ballBodyDef;
-
 	ballBodyDef.position.Set(position.x / PTM_RATIO, position.y / PTM_RATIO);
 	ballBodyDef.type = b2_dynamicBody;
 	m_pBody = pWorld->CreateBody(&ballBodyDef);
@@ -80,16 +80,14 @@ void Ball::createBox2DBody(b2World *pWorld, const CCPoint& position) {
 	// Create shape definition and add to body
 	b2FixtureDef ballShapeDef;
 	ballShapeDef.shape = &ballShape;
-	ballShapeDef.density = 1.0f;
-	ballShapeDef.friction = 0.1f;
+	ballShapeDef.density = 0.5f;
+	ballShapeDef.friction = 0.0f;
 	ballShapeDef.restitution = 1.0f;
-	m_pBody->CreateFixture(&ballShapeDef);
-
+	m_pFixture = m_pBody->CreateFixture(&ballShapeDef);
 	m_pBody->SetFixedRotation(true);
-	m_pBody->SetBullet(true);
-	m_pBody->SetLinearDamping(0.3);
+//	m_pBody->SetBullet(true);
 
-	m_pBody->SetUserData(this);
+//	m_pBody->SetUserData(this);
 }
 
 
@@ -108,13 +106,76 @@ Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoin
 	return pBall;
 }
 
-//void Ball::applyBox2DForce(const b2Vec2& force)
-//{
-////	m_pBody->ApplyForce(force, m_pBody->GetWorldCenter());
-//	m_pBody->ApplyLinearImpulse(force, m_pBody->GetWorldCenter());
-////	m_pBody->SetLinearVelocity(force);
-////	m_pBody->ApplyForceToCenter(force);
-//}
+bool Ball::ccTouchBegan(CCTouch* touch, CCEvent* event)
+{
+	CCLog("ccTouchBegan Ball");
+	CCPoint location = touch->getLocation();
+	CCRect rect = boundingBox();
+		if(!rect.containsPoint(location))
+			return false;
+		CCLog("ccTouchBegan Ball 1");
+			b2Vec2 b2location = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+			if(m_pFixture->TestPoint(b2location))
+			{
+				CCLog("ccTouchBegan Ball 3");
+				b2MouseJointDef jointDef;
+				jointDef.bodyA = m_pGroundBody;
+				jointDef.bodyB = m_pBody;
+				jointDef.target = b2location;
+				jointDef.collideConnected =true;
+				jointDef.maxForce = 5000.0f * m_pBody->GetMass();;
+				jointDef.frequencyHz = 10.0;
+				jointDef.dampingRatio = 0.0;
+				if(m_pMouseJoint)
+				{
+					m_pWorld->DestroyJoint(m_pMouseJoint);
+					m_pMouseJoint = NULL;
+				}
+				CCLog("ccTouchBegan Ball 4");
+				m_pBody->SetTransform(b2location, 0);
+				m_pMouseJoint = (b2MouseJoint *)m_pWorld->CreateJoint(&jointDef);
+				m_pBody->SetAwake(true);
+			}
+
+			CCLog("ccTouchBegan Ball end");
+	return true;
+}
+void Ball::ccTouchMoved(CCTouch* touch, CCEvent* event)
+{
+		CCPoint location = touch->getLocation();
+		if (m_pMouseJoint) {
+			b2Vec2 b2location = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+			m_pMouseJoint->SetTarget(b2location);
+		}
+
+}
+
+void Ball::ccTouchEnded(CCTouch* touch, CCEvent* event)
+{
+		if (m_pMouseJoint) {
+			CCPoint location = touch->getLocation();
+			m_pWorld->DestroyJoint(m_pMouseJoint);
+			m_pMouseJoint = NULL;
+		}
+}
 
 
+void Ball::onEnter() {
+	CCSprite::onEnter();
+	if (m_bCanTouch)
+	{
+		CCDirector* pDirector = CCDirector::sharedDirector();
+		pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	}
+}
+
+void Ball::onExit()
+{
+	if(m_bCanTouch)
+	{
+		CCDirector* pDirector = CCDirector::sharedDirector();
+		pDirector->getTouchDispatcher()->removeDelegate(this);
+	}
+    CCSprite::onExit();
+}
 

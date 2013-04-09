@@ -8,6 +8,7 @@
 #include "SysMenu.h"
 #include "VisibleRect.h"
 #include "TennisTable.h"
+#include "Bounce.h"
 
 using namespace cocos2d;
 
@@ -107,6 +108,16 @@ void SysMenu::menuCallback(CCObject* pSender)
 	}else if(((CCNode*)pSender)->getTag() == 2){
 		CCScene * pScene = CCScene::create();
 		CCLayer * pLayer = TennisTable::create();
+		pScene->addChild(pLayer);
+		CCDirector::sharedDirector()->replaceScene(pScene);
+	}else if(((CCNode*)pSender)->getTag() == 3){
+		CCScene * pScene = CCScene::create();
+		CCLayer * pLayer = TennisTable::create();
+		pScene->addChild(pLayer);
+		CCDirector::sharedDirector()->replaceScene(pScene);
+	}else if(((CCNode*)pSender)->getTag() == 4){
+		CCScene * pScene = CCScene::create();
+		CCLayer * pLayer = Bounce::create();
 		pScene->addChild(pLayer);
 		CCDirector::sharedDirector()->replaceScene(pScene);
 	}

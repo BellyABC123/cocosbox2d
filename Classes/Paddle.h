@@ -12,7 +12,6 @@ class Paddle : public CCSprite
 protected:
 	bool	m_bIgnoreBodyRotation;
 	b2Body	*m_pBody;
-	b2MouseJoint	*m_pMouseJoint;
 	float	m_pVelocity;
 	b2World	*m_pWorld;
 	b2Fixture* m_pFixture;
@@ -56,9 +55,8 @@ public:
     virtual void createBox2DBody(b2World *pWorld, const CCPoint& position);
 
     void setBox2DVelocity(const b2Vec2& velocity);
-
-    void creatPrismaticJoint(bool enableMotor);
-    void creatRevoluteJoint();
+    virtual void creatPrismaticJoint(const b2Vec2& worldAxis);
+    virtual void creatRevoluteJoint();
 
     b2Fixture* getFixture() const
     {

@@ -11,6 +11,13 @@
 #include "Box2D/Box2D.h"
 USING_NS_CC;
 class Rope: public CCLayer, b2ContactListener  {
+	enum GameState
+		{
+		    inited	= 0,
+		    running	= 1,
+			paused	= 2,
+			over	= 3
+		};
 public:
 	Rope();
 	virtual ~Rope();

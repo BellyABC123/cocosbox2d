@@ -3,7 +3,7 @@
 
 Paddle::Paddle(void) :
 		m_bIgnoreBodyRotation(false), m_pBody(NULL),  m_pFixture(
-				NULL), m_pMouseJoint(NULL), m_pPrismaticJoint(NULL), m_pRevoluteJoint(
+				NULL), m_pPrismaticJoint(NULL), m_pRevoluteJoint(
 				NULL), m_pGroundBody(NULL) {
 }
 
@@ -128,7 +128,7 @@ void Paddle::createBox2DBody(b2World *pWorld, const CCPoint& position)
 	paddleShapeDef.shape =&paddleShape;
 	paddleShapeDef.density =5.0f;
 	paddleShapeDef.friction =0.0f;
-	paddleShapeDef.restitution =0.5f;
+	paddleShapeDef.restitution =1.0f;
 	m_pFixture = m_pBody->CreateFixture(&paddleShapeDef);
 
 //	b2Vec2 v = b2Vec2(10, 0);
@@ -150,22 +150,19 @@ void Paddle::keepVelocity(float dt)
 }
 
 
-void Paddle::creatPrismaticJoint(bool enableMotor)
+void Paddle::creatPrismaticJoint(const b2Vec2& worldAxis)
 {
 	b2PrismaticJointDef jointDef;
-	b2Vec2 worldAxis(-1.0f, 0.0f);
 	jointDef.collideConnected =true;
 	jointDef.Initialize(m_pBody, m_pGroundBody, m_pBody->GetWorldCenter(), worldAxis);
 	jointDef.enableLimit = false;
-//	jointDef.lowerTranslation = -2;
-//	jointDef.upperTranslation = 10;
+//	jointDef.lowerTranslation = -100;
+//	jointDef.upperTranslation = 100;
 
-	if(enableMotor)
-	{
-		jointDef.enableMotor = true;
-		jointDef.maxMotorForce = 100;
-		jointDef.motorSpeed = 10;
-	}
+	jointDef.enableMotor = true;
+	jointDef.maxMotorForce = 100;
+	jointDef.motorSpeed = 20;
+
 	m_pPrismaticJoint = (b2PrismaticJoint*)m_pWorld->CreateJoint(&jointDef);
 }
 void Paddle::creatRevoluteJoint()
@@ -178,8 +175,8 @@ void Paddle::creatRevoluteJoint()
 	revoluteJointDef.lowerAngle = 0;
 	revoluteJointDef.upperAngle = 0;
 	revoluteJointDef.enableMotor = true;
-	revoluteJointDef.maxMotorTorque = 5;
-	revoluteJointDef.motorSpeed = CC_DEGREES_TO_RADIANS(90);
+	revoluteJointDef.maxMotorTorque = 50;
+	revoluteJointDef.motorSpeed = CC_DEGREES_TO_RADIANS(60);
 
 	m_pRevoluteJoint = (b2RevoluteJoint*)m_pWorld->CreateJoint(&revoluteJointDef);
 }

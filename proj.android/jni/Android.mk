@@ -14,7 +14,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/TennisTable.cpp \
                    ../../Classes/VisibleRect.cpp \
                    ../../Classes/SysMenu.cpp \
-                   ../../Classes/Ball.cpp
+                   ../../Classes/Ball.cpp	\
+                   ../../Classes/Bounce.cpp
                    
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes                   
 

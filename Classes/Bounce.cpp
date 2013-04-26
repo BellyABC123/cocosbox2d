@@ -64,12 +64,12 @@ bool Bounce::init()
 	m_pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::center().y));
 	m_pBall->setGroundBody(m_pGroundBody);
 	m_pBall->setCanTouch(true);
-	addChild(m_pBall);
+	addChild(m_pBall, 5);
 
-	Ball *pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::top().x, VisibleRect::top().y-50));
-	pBall->setGroundBody(m_pGroundBody);
-	pBall->setCanTouch(true);
-	addChild(pBall);
+	m_pBall2 = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::top().x, VisibleRect::top().y-50));
+	m_pBall2->setGroundBody(m_pGroundBody);
+	m_pBall2->setCanTouch(true);
+	addChild(m_pBall2);
 
 
 	b2DistanceJointDef jd;
@@ -85,10 +85,11 @@ bool Bounce::init()
 	p2 = jd.bodyB->GetWorldPoint(jd.localAnchorB);
 	d = p2 - p1;
 	jd.length = d.Length();
+	jd.collideConnected = true;
 	m_pDistanceJoint1 = (b2DistanceJoint*)m_pWorld->CreateJoint(&jd);
 
 	jd.frequencyHz = 2.0f;
-	jd.dampingRatio = 1.0f;
+	jd.dampingRatio = 0.0f;
 	jd.localAnchorA.Set(VisibleRect::bottom().x/PTM_RATIO, (VisibleRect::bottom().y+100)/PTM_RATIO);
 	jd.localAnchorB.Set(0, 0);
 	p1 = jd.bodyA->GetWorldPoint(jd.localAnchorA);
@@ -121,9 +122,9 @@ bool Bounce::init()
 	m_pEmitter->stopSystem();
 	addChild(m_pEmitter, 10);
 
-	m_pDrawNode = CCDrawNode::create();
-	m_pDrawNode->clear();
-	addChild(m_pDrawNode, 0);
+//	m_pDrawNode = CCDrawNode::create();
+//	m_pDrawNode->clear();
+//	addChild(m_pDrawNode, 0);
 
 	return true;
 }
@@ -161,26 +162,6 @@ void Bounce::update(float dt)
     int positionIterations = 3;
     m_pWorld->Step(dt, velocityIterations, positionIterations);
 
-
-    m_pDrawNode->clear();
-
-    b2Vec2 startPos = m_pDistanceJoint1->GetAnchorA();
-    b2Vec2 endPos = m_pDistanceJoint1->GetAnchorB();
-    float startX = startPos.x * PTM_RATIO;
-    float startY = startPos.y * PTM_RATIO;
-    float endX = endPos.x * PTM_RATIO;
-    float endY = endPos.y * PTM_RATIO;
-    m_pDrawNode->drawSegment(ccp(startX, startY), ccp(endX, endY), 5, ccc4f(0, 1, 0, 1));
-
-    startPos = m_pDistanceJoint2->GetAnchorA();
-    endPos = m_pDistanceJoint2->GetAnchorB();
-    startX = startPos.x * PTM_RATIO;
-    startY = startPos.y * PTM_RATIO;
-    endX = endPos.x * PTM_RATIO;
-    endY = endPos.y * PTM_RATIO;
-    m_pDrawNode->drawSegment(ccp(startX, startY), ccp(endX, endY), 5, ccc4f(0, 1, 0, 1));
-
-
 }
 
 void Bounce::BeginContact(b2Contact* contact) {
@@ -213,5 +194,32 @@ void Bounce::menuCallback(CCObject* pSender)
 
 void Bounce::didAccelerate(CCAcceleration* pAccelerationValue)
 {
-//	CCLog("Accelerate ")
+	b2Vec2 v = b2Vec2(1, 0);
+//	if(pAccelerationValue->x>0.1)
+//	{
+		m_pBall2->getB2Body()->ApplyForceToCenter(-20*m_pBall2->getB2Body()->GetMass()*pAccelerationValue->x*v);
+//		m_pBall->getB2Body()->SetLinearVelocity(-50*m_pBall->getB2Body()->GetMass()*pAccelerationValue->x*v);
+//	}
+}
+
+void Bounce::draw()
+{
+		b2Vec2 startPos = m_pDistanceJoint1->GetAnchorA();
+	    b2Vec2 endPos = m_pDistanceJoint1->GetAnchorB();
+	    float startX = startPos.x * PTM_RATIO;
+	    float startY = startPos.y * PTM_RATIO;
+	    float endX = endPos.x * PTM_RATIO;
+	    float endY = endPos.y * PTM_RATIO;
+	    glLineWidth( 5.0f );
+	    ccDrawColor4B(255,0,0,255);
+	    ccDrawLine( ccp(startX, startY), ccp(endX, endY));
+
+	    startPos = m_pDistanceJoint2->GetAnchorA();
+	    endPos = m_pDistanceJoint2->GetAnchorB();
+	    startX = startPos.x * PTM_RATIO;
+	    startY = startPos.y * PTM_RATIO;
+	    endX = endPos.x * PTM_RATIO;
+	    endY = endPos.y * PTM_RATIO;
+	    ccDrawColor4B(255,255,0,255);
+	    ccDrawLine(ccp(startX, startY), ccp(endX, endY));
 }

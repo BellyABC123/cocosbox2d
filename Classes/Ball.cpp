@@ -108,36 +108,31 @@ Ball* Ball::ballWithTexture(CCTexture2D* aTexture, b2World* world, const  CCPoin
 
 bool Ball::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
-	CCLog("ccTouchBegan Ball");
 	CCPoint location = touch->getLocation();
 	CCRect rect = boundingBox();
 		if(!rect.containsPoint(location))
 			return false;
-		CCLog("ccTouchBegan Ball 1");
 			b2Vec2 b2location = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
 			if(m_pFixture->TestPoint(b2location))
 			{
-				CCLog("ccTouchBegan Ball 3");
 				b2MouseJointDef jointDef;
 				jointDef.bodyA = m_pGroundBody;
 				jointDef.bodyB = m_pBody;
 				jointDef.target = b2location;
 				jointDef.collideConnected =true;
-				jointDef.maxForce = 5000.0f * m_pBody->GetMass();;
+				jointDef.maxForce = 500.0f * m_pBody->GetMass();;
 				jointDef.frequencyHz = 10.0;
 				jointDef.dampingRatio = 0.0;
-				if(m_pMouseJoint)
-				{
-					m_pWorld->DestroyJoint(m_pMouseJoint);
-					m_pMouseJoint = NULL;
-				}
-				CCLog("ccTouchBegan Ball 4");
+//				if(m_pMouseJoint)
+//				{
+//					m_pWorld->DestroyJoint(m_pMouseJoint);
+//					m_pMouseJoint = NULL;
+//				}
 				m_pBody->SetTransform(b2location, 0);
 				m_pMouseJoint = (b2MouseJoint *)m_pWorld->CreateJoint(&jointDef);
 				m_pBody->SetAwake(true);
 			}
 
-			CCLog("ccTouchBegan Ball end");
 	return true;
 }
 void Ball::ccTouchMoved(CCTouch* touch, CCEvent* event)

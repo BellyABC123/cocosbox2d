@@ -52,7 +52,7 @@ void AppDelegate::applicationDidEnterBackground()
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->pauseAllEffects();
 
-    //CCDirector::sharedDirector()->pause();
+    CCDirector::sharedDirector()->pause();
 
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
@@ -65,7 +65,7 @@ void AppDelegate::applicationWillEnterForeground()
     SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->resumeAllEffects();
 
-    //CCDirector::sharedDirector()->resume();
+    CCDirector::sharedDirector()->resume();
     
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();

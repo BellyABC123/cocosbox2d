@@ -47,11 +47,13 @@ public:
 
 	void menuCallback(CCObject* pSender);
 
+	virtual void draw();
+
 private:
 	b2World	*m_pWorld;
 	Ball	*m_pBall;
+	Ball	*m_pBall2;
 	b2Body	*m_pGroundBody;
-	CCDrawNode	*m_pDrawNode;
 	b2DistanceJoint	*m_pDistanceJoint1;
 	b2DistanceJoint	*m_pDistanceJoint2;
 	GameState	m_eGameState;

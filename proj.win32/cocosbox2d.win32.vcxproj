@@ -13,10 +13,12 @@
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Ball.h" />
+    <ClInclude Include="..\Classes\Bounce.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\LogoLayer.h" />
     <ClInclude Include="..\Classes\Paddle.h" />
     <ClInclude Include="..\Classes\PlayerPaddle.h" />
+    <ClInclude Include="..\Classes\Rope.h" />
     <ClInclude Include="..\Classes\SysMenu.h" />
     <ClInclude Include="..\Classes\TennisPaddle.h" />
     <ClInclude Include="..\Classes\TennisTable.h" />
@@ -27,10 +29,12 @@
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Ball.cpp" />
+    <ClCompile Include="..\Classes\Bounce.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LogoLayer.cpp" />
     <ClCompile Include="..\Classes\Paddle.cpp" />
     <ClCompile Include="..\Classes\PlayerPaddle.cpp" />
+    <ClCompile Include="..\Classes\Rope.cpp" />
     <ClCompile Include="..\Classes\SysMenu.cpp" />
     <ClCompile Include="..\Classes\TennisPaddle.cpp" />
     <ClCompile Include="..\Classes\TennisTable.cpp" />

@@ -1,13 +1,11 @@
-﻿生成启动时间为 2013-3-26 18:56:43。
+﻿生成启动时间为 2013-4-25 11:16:23。
      1>项目“D:\cocosbox2d\proj.win32\cocosbox2d.win32.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
-         正在对“Debug.win32\cocosbox2d.win32.unsuccessfulbuild”执行 Touch 任务。
+         正在创建“Debug.win32\cocosbox2d.win32.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I..\Classes /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\include" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\kazmath\include" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\win32" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\third_party\win32" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\third_party\win32\OGLES" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\external" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\CocosDenshion\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D STRICT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS_DEBUG /D COCOS2D_DEBUG=1 /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\LogoLayer.cpp
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I..\Classes /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\include" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\kazmath\include" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\win32" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\third_party\win32" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\cocos2dx\platform\third_party\win32\OGLES" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\external" /I"D:\learn\cocos2d-2.1beta3-x-2.1.1\CocosDenshion\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D STRICT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS_DEBUG /D COCOS2D_DEBUG=1 /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\LogoLayer.cpp
          LogoLayer.cpp
      1>d:\cocosbox2d\classes\logolayer.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-         AppDelegate.cpp
-         正在生成代码...
        ManifestResourceCompile:
          所有输出均为最新。
        Link:
@@ -36,4 +34,4 @@
 
 生成成功。
 
-已用时间 00:04:17.78
+已用时间 00:00:06.42

@@ -35,8 +35,8 @@ public:
 	virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCSet *pTouch, CCEvent *pEvent);
 
-	virtual void keyBackClicked();//Android 返回键
-	virtual void keyMenuClicked();//Android 菜单键
+	virtual void keyBackClicked();//Android 返回�?
+	virtual void keyMenuClicked();//Android 菜单�?
 
 	virtual void BeginContact(b2Contact* contact);
     virtual void EndContact(b2Contact* contact);

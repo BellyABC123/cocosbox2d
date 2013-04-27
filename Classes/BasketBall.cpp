@@ -7,7 +7,7 @@
 
 
 using namespace CocosDenshion;
-
+//http://bbs.9ria.com/thread-104394-1-1.html
 BasketBall::BasketBall(void):m_pWorld(NULL), m_pBall(NULL), m_pReBound(NULL), m_pGroundBody(NULL)
 {
 }
@@ -28,7 +28,7 @@ BasketBall::~BasketBall(void)
 	CC_SAFE_DELETE(m_pWorld);
 }
 
-bool Bounce::init()
+bool BasketBall::init()
 {
 	if ( !CCLayer::init() )
 	{
@@ -36,7 +36,7 @@ bool Bounce::init()
 	}
 
 	b2Vec2 gravity;
-	gravity.Set(0.0f, 0.0f);
+	gravity.Set(-10.0f, 0.0f);
 	m_pWorld = new b2World(gravity);
 	m_pWorld->SetAllowSleeping(false);
 	m_pWorld->SetContinuousPhysics(true);
@@ -55,47 +55,18 @@ bool Bounce::init()
 	m_pGroundBody->CreateFixture(&groundBoxDef);
 	groundBox.Set(b2Vec2(VisibleRect::leftTop().x/PTM_RATIO,VisibleRect::leftTop().y/PTM_RATIO), b2Vec2(VisibleRect::leftBottom().x/PTM_RATIO,VisibleRect::leftBottom().y/PTM_RATIO));
 	m_pGroundBody->CreateFixture(&groundBoxDef);
-	groundBox.Set(b2Vec2(VisibleRect::leftTop().x/PTM_RATIO,VisibleRect::leftTop().y/PTM_RATIO), b2Vec2(VisibleRect::rightTop().x/PTM_RATIO,VisibleRect::rightTop().y/PTM_RATIO));
-	m_pGroundBody->CreateFixture(&groundBoxDef);
+//	groundBox.Set(b2Vec2(VisibleRect::leftTop().x/PTM_RATIO,VisibleRect::leftTop().y/PTM_RATIO), b2Vec2(VisibleRect::rightTop().x/PTM_RATIO,VisibleRect::rightTop().y/PTM_RATIO));
+//	m_pGroundBody->CreateFixture(&groundBoxDef);
 	groundBox.Set(b2Vec2(VisibleRect::rightBottom().x/PTM_RATIO,VisibleRect::rightBottom().y/PTM_RATIO), b2Vec2(VisibleRect::rightTop().x/PTM_RATIO,VisibleRect::rightTop().y/PTM_RATIO));
 	m_pGroundBody->CreateFixture(&groundBoxDef);
 
-	m_pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::center().y));
+	m_pBall = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("basketball.png"), m_pWorld, ccp(VisibleRect::center().x, VisibleRect::center().y));
 	m_pBall->setGroundBody(m_pGroundBody);
 	m_pBall->setCanTouch(true);
 	addChild(m_pBall, 5);
 
-	m_pBall2 = Ball::ballWithTexture(CCTextureCache::sharedTextureCache()->addImage("ball.png"), m_pWorld, ccp(VisibleRect::top().x, VisibleRect::top().y-50));
-	m_pBall2->setGroundBody(m_pGroundBody);
-	m_pBall2->setCanTouch(true);
-	addChild(m_pBall2);
 
 
-	b2DistanceJointDef jd;
-	b2Vec2 p1, p2, d;
-
-	jd.frequencyHz = 2.0f;
-	jd.dampingRatio = 0.0f;
-	jd.bodyA = m_pGroundBody;
-	jd.bodyB = m_pBall->getB2Body();
-	jd.localAnchorA.Set(VisibleRect::top().x/PTM_RATIO, (VisibleRect::top().y-100)/PTM_RATIO);
-	jd.localAnchorB.Set(0, 0);
-	p1 = jd.bodyA->GetWorldPoint(jd.localAnchorA);
-	p2 = jd.bodyB->GetWorldPoint(jd.localAnchorB);
-	d = p2 - p1;
-	jd.length = d.Length();
-	jd.collideConnected = true;
-	m_pDistanceJoint1 = (b2DistanceJoint*)m_pWorld->CreateJoint(&jd);
-
-	jd.frequencyHz = 2.0f;
-	jd.dampingRatio = 0.0f;
-	jd.localAnchorA.Set(VisibleRect::bottom().x/PTM_RATIO, (VisibleRect::bottom().y+100)/PTM_RATIO);
-	jd.localAnchorB.Set(0, 0);
-	p1 = jd.bodyA->GetWorldPoint(jd.localAnchorA);
-	p2 = jd.bodyB->GetWorldPoint(jd.localAnchorB);
-	d = p2 - p1;
-	jd.length = d.Length();
-	m_pDistanceJoint2 = (b2DistanceJoint*)m_pWorld->CreateJoint(&jd);
 
 	m_pWorld->SetContactListener(this);
 	setTouchEnabled(true);
@@ -104,7 +75,7 @@ bool Bounce::init()
 
 	CCLabelTTF* beginLable = CCLabelTTF::create("begin", "Arial", 32);
 	beginLable->setOpacity((GLubyte)100);
-	CCMenuItemLabel* pPlayItem = CCMenuItemLabel::create(beginLable, this, menu_selector(Bounce::menuCallback));
+	CCMenuItemLabel* pPlayItem = CCMenuItemLabel::create(beginLable, this, menu_selector(BasketBall::menuCallback));
 	pPlayItem->setTag(1);
 	pPlayItem->setPosition(ccp( VisibleRect::right().x-100 , VisibleRect::bottom().y+50 ));
 
@@ -128,21 +99,21 @@ bool Bounce::init()
 	return true;
 }
 
-void Bounce::onEnter()
+void BasketBall::onEnter()
 {
 	CCLayer::onEnter();
 	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE_2);
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
 	this->scheduleUpdate();
 }
-void Bounce::onExit()
+void BasketBall::onExit()
 {
 	unscheduleUpdate();
 	SimpleAudioEngine::sharedEngine()->unloadEffect(EFFECT_FILE_2);
 	CCLayer::onExit();
 }
 
-void Bounce::keyBackClicked()
+void BasketBall::keyBackClicked()
 {
 	CCScene * pScene = CCScene::create();
 			CCLayer * pSysMenu = SysMenu::create();
@@ -150,12 +121,12 @@ void Bounce::keyBackClicked()
 			CCDirector::sharedDirector()->replaceScene(pScene);
 }
 
-void Bounce::keyMenuClicked()
+void BasketBall::keyMenuClicked()
 {
 
 }
 
-void Bounce::update(float dt)
+void BasketBall::update(float dt)
 {
     int velocityIterations = 5;
     int positionIterations = 3;
@@ -163,7 +134,7 @@ void Bounce::update(float dt)
 
 }
 
-void Bounce::BeginContact(b2Contact* contact) {
+void BasketBall::BeginContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
 	b2Fixture* fixtureB = contact->GetFixtureB();
 
@@ -173,35 +144,20 @@ void Bounce::BeginContact(b2Contact* contact) {
 
 
 }
-void Bounce::EndContact(b2Contact* contact) {
+void BasketBall::EndContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
 	b2Fixture* fixtureB = contact->GetFixtureB();
 
 
 }
-void Bounce::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+void BasketBall::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
 }
-void Bounce::PostSolve(const b2Contact* contact, const b2ContactImpulse* impulse)
+void BasketBall::PostSolve(const b2Contact* contact, const b2ContactImpulse* impulse)
 {
 }
 
-void Bounce::menuCallback(CCObject* pSender)
-{
-
-}
-
-void Bounce::didAccelerate(CCAcceleration* pAccelerationValue)
-{
-	b2Vec2 v = b2Vec2(1, 0);
-//	if(pAccelerationValue->x>0.1)
-//	{
-		m_pBall2->getB2Body()->ApplyForceToCenter(-20*m_pBall2->getB2Body()->GetMass()*pAccelerationValue->x*v);
-//		m_pBall->getB2Body()->SetLinearVelocity(-50*m_pBall->getB2Body()->GetMass()*pAccelerationValue->x*v);
-//	}
-}
-
-void Bounce::draw()
+void BasketBall::draw()
 {
 		b2Vec2 startPos = m_pDistanceJoint1->GetAnchorA();
 	    b2Vec2 endPos = m_pDistanceJoint1->GetAnchorB();

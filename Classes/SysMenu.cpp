@@ -9,6 +9,7 @@
 #include "VisibleRect.h"
 #include "TennisTable.h"
 #include "Bounce.h"
+#include "BasketBall.h"
 
 using namespace cocos2d;
 
@@ -67,7 +68,7 @@ bool SysMenu::init()
     pOptionItem->setTag(2);
     pOptionItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y+100 ));
 
-    CCLabelTTF* setLabel = CCLabelTTF::create("Rope", "Arial", 64);
+    CCLabelTTF* setLabel = CCLabelTTF::create("BasketBall", "Arial", 64);
     CCMenuItemLabel* pSetItem = CCMenuItemLabel::create(setLabel, this, menu_selector(SysMenu::menuCallback));
     pSetItem->setTag(3);
     pSetItem->setPosition(ccp( VisibleRect::center().x , VisibleRect::center().y ));
@@ -112,7 +113,7 @@ void SysMenu::menuCallback(CCObject* pSender)
 		CCDirector::sharedDirector()->replaceScene(pScene);
 	}else if(((CCNode*)pSender)->getTag() == 3){
 		CCScene * pScene = CCScene::create();
-		CCLayer * pLayer = TennisTable::create();
+		CCLayer * pLayer = BasketBall::create();
 		pScene->addChild(pLayer);
 		CCDirector::sharedDirector()->replaceScene(pScene);
 	}else if(((CCNode*)pSender)->getTag() == 4){

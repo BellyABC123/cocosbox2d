@@ -13,19 +13,14 @@ public:
 	virtual bool init();
 	virtual void onEnter();
 	virtual void onExit();
-
-	virtual void keyBackClicked(); //Android ·µ»Ø¼ü
-	virtual void keyMenuClicked(); //Android ²Ëµ¥¼ü
-
+	virtual void keyBackClicked();
 	virtual void BeginContact(b2Contact* contact);
 	virtual void EndContact(b2Contact* contact);
 	virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
-	virtual void PostSolve(const b2Contact* contact,
-			const b2ContactImpulse* impulse);
+	virtual void PostSolve(const b2Contact* contact, const b2ContactImpulse* impulse);
 
 	CREATE_FUNC(BasketBall);
 	void update(float dt);
-	void menuCallback(CCObject* pSender);
 	virtual void draw();
 
 private:

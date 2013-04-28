@@ -28,5 +28,7 @@ private:
 	Ball	*m_pBall;
 	b2Body	*m_pReBound;
 	b2Body	*m_pGroundBody;
+	CCParticleSystem*    m_pEmitter;
+	CCArray	*m_pLocus;    
 };
 

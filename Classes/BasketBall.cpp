@@ -65,25 +65,12 @@ bool BasketBall::init()
 	m_pBall->setCanTouch(true);
 	addChild(m_pBall, 5);
 
-
-
-
 	m_pWorld->SetContactListener(this);
 	setTouchEnabled(true);
 	setKeypadEnabled(true);
-	setAccelerometerEnabled(true);
 
-	CCLabelTTF* beginLable = CCLabelTTF::create("begin", "Arial", 32);
-	beginLable->setOpacity((GLubyte)100);
-	CCMenuItemLabel* pPlayItem = CCMenuItemLabel::create(beginLable, this, menu_selector(BasketBall::menuCallback));
-	pPlayItem->setTag(1);
-	pPlayItem->setPosition(ccp( VisibleRect::right().x-100 , VisibleRect::bottom().y+50 ));
-
-	CCMenu* pMenu = CCMenu::create(pPlayItem,  NULL);
-	pMenu->setPosition(CCPointZero);
-	addChild(pMenu, 1);
-
-	m_eGameState = inited;
+	m_pLocus = CCArray::createWithCapacity(20);
+    m_pLocus->retain();
 
 	m_pEmitter = new CCParticleSystemQuad();
 	std::string filename = "ExplodingRing.plist";
@@ -91,10 +78,6 @@ bool BasketBall::init()
 	m_pEmitter->autorelease();
 	m_pEmitter->stopSystem();
 	addChild(m_pEmitter, 10);
-
-//	m_pDrawNode = CCDrawNode::create();
-//	m_pDrawNode->clear();
-//	addChild(m_pDrawNode, 0);
 
 	return true;
 }
@@ -121,10 +104,6 @@ void BasketBall::keyBackClicked()
 			CCDirector::sharedDirector()->replaceScene(pScene);
 }
 
-void BasketBall::keyMenuClicked()
-{
-
-}
 
 void BasketBall::update(float dt)
 {
@@ -139,10 +118,6 @@ void BasketBall::BeginContact(b2Contact* contact) {
 	b2Fixture* fixtureB = contact->GetFixtureB();
 
 	SimpleAudioEngine::sharedEngine()->playEffect(EFFECT_FILE_2);
-
-
-
-
 }
 void BasketBall::EndContact(b2Contact* contact) {
 	b2Fixture* fixtureA = contact->GetFixtureA();
